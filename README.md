@@ -49,3 +49,7 @@ uv run pre-commit install
 ```
 
 Pull requests are welcome.
+
+
+Pull requests ticks:
+|
