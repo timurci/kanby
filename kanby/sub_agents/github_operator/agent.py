@@ -16,12 +16,16 @@
 
 from google.adk import Agent
 
-from kanby.sub_agents.github_operator.prompt import GITHUB_OPERATOR_PROMPT
+from .prompt import GITHUB_OPERATOR_PROMPT
+from .tools import github_projects_toolset
 
 github_operator = Agent(
     model="gemini-2.5-flash",
     name="github_operator",
-    description="The operational agent empowered with GitHub MCP. "
-    "It manages tasks on GitHub Projects boards.",
+    description=(
+        "The operational agent empowered with GitHub MCP. "
+        "It manages tasks on GitHub Projects boards."
+    ),
     instruction=GITHUB_OPERATOR_PROMPT,
+    tools=[github_projects_toolset],
 )
