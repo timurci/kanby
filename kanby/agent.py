@@ -14,12 +14,25 @@
 
 """Provides `root_agent` (coordinator) and `app`."""
 
+import logging
+
 from google.adk import Agent
 from google.adk.apps import App
 
 from kanby.prompt import COORDINATOR_PROMPT
 from kanby.sub_agents.github_operator.agent import github_operator
 from kanby.sub_agents.task_decomposer.agent import task_decomposer
+
+from .plugins.logging import LoggingPlugin
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(filename)s:%(lineno)s %(levelname)s:%(message)s",
+)
+
+logger = logging.getLogger(__name__)
+
+logger.debug("Logging system initialized successfully.")
 
 root_agent = Agent(
     model="gemini-2.5-flash",
@@ -29,4 +42,4 @@ root_agent = Agent(
     sub_agents=[task_decomposer, github_operator],
 )
 
-app = App(name="kanby", root_agent=root_agent)
+app = App(name="kanby", root_agent=root_agent, plugins=[LoggingPlugin()])
