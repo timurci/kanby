@@ -985,6 +985,7 @@ version = "0.2.0"
 source = { virtual = "." }
 dependencies = [
     { name = "google-adk" },
+    { name = "python-dotenv" },
 ]
 
 [package.dev-dependencies]
@@ -994,7 +995,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "google-adk", specifier = ">=1.18.0" }]
+requires-dist = [
+    { name = "google-adk", specifier = ">=1.18.0" },
+    { name = "python-dotenv", specifier = ">=1.2.1" },
+]
 
 [package.metadata.requires-dev]
 dev = [
