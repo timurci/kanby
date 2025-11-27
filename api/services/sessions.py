@@ -27,7 +27,7 @@ from google.adk.sessions import (
 from google.adk.sessions.base_session_service import ListSessionsResponse
 from google.genai.types import Content
 
-from api.core.config import SESSION_SERVICE_HOST
+from api.core.config import SESSION_SERVICE_URI
 from api.schemas.sessions import AgentQuery
 from api.schemas.users import User
 from kanby.agent import app as kanby_app
@@ -42,9 +42,9 @@ class SessionNotFoundError(Exception):
 
 
 def _init_adk_session_service() -> BaseSessionService:
-    if SESSION_SERVICE_HOST is None:
+    if SESSION_SERVICE_URI is None:
         return InMemorySessionService()
-    return DatabaseSessionService(db_url=SESSION_SERVICE_HOST)
+    return DatabaseSessionService(db_url=SESSION_SERVICE_URI)
 
 
 class SessionService:
