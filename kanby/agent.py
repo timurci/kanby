@@ -25,11 +25,6 @@ from kanby.sub_agents.task_decomposer.agent import task_decomposer
 
 from .plugins.logging import LoggingPlugin
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(filename)s:%(lineno)s %(levelname)s:%(message)s",
-)
-
 logger = logging.getLogger(__name__)
 
 logger.debug("Logging system initialized successfully.")
