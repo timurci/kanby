@@ -20,6 +20,7 @@ from google.adk.tools import AgentTool
 from kanby.sub_agents.task_decomposer.agent import task_decomposer
 from kanby.sub_agents.task_dependency_mapper.agent import task_dependency_mapper
 from kanby.sub_agents.task_planner.prompt import TASK_PLANNER_PROMPT
+from kanby.sub_agents.task_requirement_validator.agent import task_requirement_validator
 from kanby.sub_agents.task_reviewer.agent import task_reviewer
 
 task_planner = Agent(
@@ -27,12 +28,13 @@ task_planner = Agent(
     name="task_planner",
     description=(
         """
-        Conversational task planner that orchestrates task decomposition,
-        dependency mapping, and plan review
+        Conversational task planner that orchestrates requirement validation,
+        task decomposition, dependency mapping, and plan review
         """
     ),
     instruction=TASK_PLANNER_PROMPT,
     tools=[
+        AgentTool(agent=task_requirement_validator),
         AgentTool(agent=task_decomposer),
         AgentTool(agent=task_dependency_mapper),
         AgentTool(agent=task_reviewer),

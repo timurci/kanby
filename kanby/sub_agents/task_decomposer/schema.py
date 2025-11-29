@@ -14,8 +14,6 @@
 
 """Pydantic schemas for task_decomposer agent."""
 
-from typing import ClassVar
-
 from pydantic import BaseModel, Field
 
 
@@ -25,28 +23,13 @@ class TaskItem(BaseModel):
     Base class containing common task fields used across the task planning workflow.
     """
 
+    id: int = Field(..., description="Sequential task ID start from 1")
     title: str = Field(..., description="Verb-Noun task title")
-    description: str = Field(..., description="Detailed acceptance criteria")
+    description: str = Field(..., description="Task description")
+    acceptance_criteria: list[str] = Field(..., description="Task acceptance critera")
 
 
-class TaskDecomposerOutput(BaseModel):
-    """Output schema for task_decomposer agent.
+class TaskList(BaseModel):
+    """Contains list of tasks."""
 
-    Contains either decomposed tasks or clarification questions based on input clarity.
-    This is the first stage in the task planning workflow.
-    """
-
-    tasks: list[TaskItem] | None = Field(
-        default=None, description="List of decomposed tasks if requirements are clear"
-    )
-    clarification_questions: list[str] | None = Field(
-        default=None,
-        description="List of clarification questions if requirements are vague",
-    )
-
-    class Config:
-        """Model configuration."""
-
-        json_schema_extra: ClassVar[dict[str, str]] = {
-            "description": "Either tasks OR clarification_questions provided"
-        }
+    tasks: list[TaskItem] = Field(..., description="List of decomposed tasks")

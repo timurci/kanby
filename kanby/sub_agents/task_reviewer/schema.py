@@ -18,11 +18,6 @@ from enum import Enum
 
 from pydantic import BaseModel, Field
 
-from kanby.sub_agents.task_dependency_mapper.schema import (
-    TaskDependency,
-    TaskItemWithId,
-)
-
 
 class TaskReviewFindingType(str, Enum):
     """Enum for task review finding types in task planning workflow."""
@@ -64,21 +59,10 @@ class TaskReviewFinding(BaseModel):
     suggestion: str = Field(..., description="Suggested fix or improvement")
 
 
-class TaskReviewerInput(BaseModel):
-    """Input schema for task_reviewer agent.
-
-    Accepts tasks with dependencies from task_dependency_mapper for validation.
-    """
-
-    tasks: list[TaskItemWithId]
-    dependencies: list[TaskDependency]
-
-
-class TaskReviewerOutput(BaseModel):
+class PlanReview(BaseModel):
     """Output schema for task_reviewer agent.
 
     Contains review status, fingings and recommendations.
-    This is the third stage in the task planning workflow after dependency mapping.
     """
 
     review_status: TaskReviewStatus = Field(..., description="Overall review status")

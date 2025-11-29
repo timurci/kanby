@@ -16,11 +16,10 @@
 
 from google.adk import Agent
 
-from kanby.sub_agents.task_reviewer.prompt import TASK_REVIEWER_PROMPT
-from kanby.sub_agents.task_reviewer.schema import (
-    TaskReviewerInput,
-    TaskReviewerOutput,
-)
+from kanby.sub_agents.task_dependency_mapper.schema import TaskListWithDependency
+
+from .prompt import TASK_REVIEWER_PROMPT
+from .schema import PlanReview
 
 task_reviewer = Agent(
     model="gemini-2.5-flash",
@@ -30,7 +29,7 @@ task_reviewer = Agent(
         " optimization opportunities"
     ),
     instruction=TASK_REVIEWER_PROMPT,
-    input_schema=TaskReviewerInput,
-    output_schema=TaskReviewerOutput,
+    input_schema=TaskListWithDependency,
+    output_schema=PlanReview,
     output_key="task_reviewer",
 )
