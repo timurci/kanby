@@ -56,9 +56,10 @@ help: ## Show this help message
 # --- Local Development --------------------------------------------------------
 
 .PHONY: install
-install: ## Install Python dependencies with uv
+install: ## Install Python dependencies with uv and git hooks
 	@echo "$(ICON_INFO) Installing dependencies..."
 	uv sync --locked
+	uv run pre-commit install
 	@echo "$(ICON_OK) Installation complete."
 
 .PHONY: adk-web
