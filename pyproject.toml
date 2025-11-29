@@ -11,12 +11,15 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "google-adk>=1.18.0",
-    "psycopg[binary]>=3.2.13",
     "python-dotenv>=1.2.1",
 ]
 
 [dependency-groups]
+api = [
+    "psycopg[binary]>=3.2.13",
+]
 dev = [
+    "google-adk[eval]>=1.18.0",
     "pre-commit>=4.4.0",
     "ruff>=0.14.5",
 ]

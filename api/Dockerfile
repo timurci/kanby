@@ -3,7 +3,7 @@ FROM ghcr.io/astral-sh/uv:python3.13-alpine
 WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
-RUN uv sync --locked
+RUN uv sync --locked --no-dev --group api
 
 COPY kanby/ kanby/
 COPY api/ api/
