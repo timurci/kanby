@@ -12,18 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Provides the `task_decomposer` agent."""
+"""Provides the `task_reviewer` agent."""
 
 from google.adk import Agent
 
-from kanby.sub_agents.task_decomposer.prompt import TASK_DECOMPOSER_PROMPT
-from kanby.sub_agents.task_decomposer.schema import TaskList
+from kanby.sub_agents.task_dependency_mapper.schema import TaskListWithDependency
 
-task_decomposer = Agent(
+from .prompt import TASK_REVIEWER_PROMPT
+from .schema import PlanReview
+
+task_reviewer = Agent(
     model="gemini-2.5-flash",
-    name="task_decomposer",
-    description="Transforms raw text into atomic, well-structured task specifications",
-    instruction=TASK_DECOMPOSER_PROMPT,
-    output_schema=TaskList,
-    output_key="task_decomposer",
+    name="task_reviewer",
+    description=(
+        "Reviews task plans for logical consistency, circular dependencies, and"
+        " optimization opportunities"
+    ),
+    instruction=TASK_REVIEWER_PROMPT,
+    input_schema=TaskListWithDependency,
+    output_schema=PlanReview,
+    output_key="task_reviewer",
 )

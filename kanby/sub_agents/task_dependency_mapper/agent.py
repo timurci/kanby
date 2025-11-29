@@ -12,18 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Provides the `task_decomposer` agent."""
+"""Provides the `task_dependency_mapper` agent."""
 
 from google.adk import Agent
 
-from kanby.sub_agents.task_decomposer.prompt import TASK_DECOMPOSER_PROMPT
 from kanby.sub_agents.task_decomposer.schema import TaskList
 
-task_decomposer = Agent(
+from .prompt import DEPENDENCY_MAPPER_PROMPT
+from .schema import TaskListWithDependency
+
+task_dependency_mapper = Agent(
     model="gemini-2.5-flash",
-    name="task_decomposer",
-    description="Transforms raw text into atomic, well-structured task specifications",
-    instruction=TASK_DECOMPOSER_PROMPT,
-    output_schema=TaskList,
-    output_key="task_decomposer",
+    name="task_dependency_mapper",
+    description=(
+        "Maps dependencies between tasks and determines optimal execution order"
+    ),
+    instruction=DEPENDENCY_MAPPER_PROMPT,
+    input_schema=TaskList,
+    output_schema=TaskListWithDependency,
+    output_key="task_dependency_mapper",
 )

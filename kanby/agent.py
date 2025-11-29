@@ -21,7 +21,7 @@ from google.adk.apps import App, ResumabilityConfig
 
 from kanby.prompt import COORDINATOR_PROMPT
 from kanby.sub_agents.github_operator.agent import github_operator
-from kanby.sub_agents.task_decomposer.agent import task_decomposer
+from kanby.sub_agents.task_planner.agent import task_planner
 
 from .plugins.logging import LoggingPlugin
 
@@ -34,12 +34,12 @@ root_agent = Agent(
     name="coordinator",
     description="The root agent responsible for intent detection and routing",
     instruction=COORDINATOR_PROMPT,
-    sub_agents=[task_decomposer, github_operator],
+    sub_agents=[task_planner, github_operator],
 )
 
 app = App(
     name="kanby",
     root_agent=root_agent,
     resumability_config=ResumabilityConfig(is_resumable=True),
-    plugins=[LoggingPlugin()]
+    plugins=[LoggingPlugin()],
 )
