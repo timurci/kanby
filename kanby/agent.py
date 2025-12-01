@@ -18,6 +18,7 @@ import logging
 
 from google.adk import Agent
 from google.adk.apps import App, ResumabilityConfig
+from google.adk.apps.app import EventsCompactionConfig
 
 from kanby.prompt import COORDINATOR_PROMPT
 from kanby.sub_agents.github_operator.agent import github_operator
@@ -41,5 +42,8 @@ app = App(
     name="kanby",
     root_agent=root_agent,
     resumability_config=ResumabilityConfig(is_resumable=True),
+    events_compaction_config=EventsCompactionConfig(
+        compaction_interval=5, overlap_size=1
+    ),
     plugins=[LoggingPlugin()],
 )
