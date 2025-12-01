@@ -17,26 +17,25 @@
 from google.adk import Agent
 from google.adk.tools import AgentTool
 
-from kanby.sub_agents.task_decomposer.agent import task_decomposer
-from kanby.sub_agents.task_dependency_mapper.agent import task_dependency_mapper
-from kanby.sub_agents.task_planner.prompt import TASK_PLANNER_PROMPT
-from kanby.sub_agents.task_requirement_validator.agent import task_requirement_validator
-from kanby.sub_agents.task_reviewer.agent import task_reviewer
+from kanby.sub_agents.task_generator_pipeline.agent import task_generator_pipeline
+from kanby.sub_agents.task_requirement_validator.agent import (
+    task_requirement_validator,
+)
+
+from .prompt import TASK_PLANNER_PROMPT
 
 task_planner = Agent(
     model="gemini-2.5-flash",
     name="task_planner",
     description=(
         """
-        Conversational task planner that orchestrates requirement validation,
-        task decomposition, dependency mapping, and plan review
+        Conversational task planner that orchestrates requirement validation and
+        sequential task planning pipeline
         """
     ),
     instruction=TASK_PLANNER_PROMPT,
     tools=[
         AgentTool(agent=task_requirement_validator),
-        AgentTool(agent=task_decomposer),
-        AgentTool(agent=task_dependency_mapper),
-        AgentTool(agent=task_reviewer),
+        AgentTool(agent=task_generator_pipeline),
     ],
 )

@@ -13,7 +13,3 @@
 # limitations under the License.
 
 """Task reviewer subagent package."""
-
-from kanby.sub_agents.task_reviewer.agent import task_reviewer
-
-__all__ = ["task_reviewer"]

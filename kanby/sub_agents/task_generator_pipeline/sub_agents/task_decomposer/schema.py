@@ -23,7 +23,7 @@ class TaskItem(BaseModel):
     Base class containing common task fields used across the task planning workflow.
     """
 
-    id: int = Field(..., description="Sequential task ID start from 1")
+    id: int = Field(..., description="Unique sequential task ID starting from 1")
     title: str = Field(..., description="Verb-Noun task title")
     description: str = Field(..., description="Task description")
     acceptance_criteria: list[str] = Field(..., description="Task acceptance critera")
