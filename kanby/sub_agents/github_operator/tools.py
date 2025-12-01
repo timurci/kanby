@@ -14,37 +14,10 @@
 
 """Provides tools for the GitHub operator agent."""
 
-import logging
 import os
 
-from dotenv import load_dotenv
 from google.adk.tools import McpToolset
 from google.adk.tools.mcp_tool.mcp_session_manager import StreamableHTTPServerParams
-
-logger = logging.getLogger(__name__)
-
-
-def get_github_pat(key: str = "GITHUB_PERSONAL_ACCESS_TOKEN") -> str | None:
-    """Retrieve a GitHub personal access token from the environment.
-
-    First checks `os.environ`. If not found, loads the local `.env` file and retries.
-
-    Args:
-        key: Environment variable name for the token.
-
-    Returns:
-        The GitHub personal access token, or `None` if it is not set.
-    """
-    token = os.getenv(key, None)
-
-    if token is None:
-        logger.warning(
-            "Environment variable '%s' was not found. Attempting to load `.env`.", key
-        )
-        load_dotenv()
-        token = os.getenv(key, None)
-
-    return token
 
 
 def build_github_mcp_toolset(
@@ -54,10 +27,9 @@ def build_github_mcp_toolset(
 ) -> McpToolset:
     """Build an McpToolset for GitHub MCP server.
 
-    By default, reads the authorization token from `GITHUB_PERSONAL_ACCESS_TOKEN`
-    (loaded from `.env` if not present in the environment). To customize this,
-    provide a `header_provider` via `**kwargs` for dynamic token retrieval
-    using `ToolContext`. See `McpToolset` for details.
+    By default, reads the authorization token from `GITHUB_PERSONAL_ACCESS_TOKEN`.
+    To customize the authorization method, provide a `header_provider` via `**kwargs`
+    for dynamic token retrieval. See `McpToolset()` for details.
 
     Args:
         github_toolsets: Whitelist of GitHub toolsets to enable.
@@ -65,7 +37,9 @@ def build_github_mcp_toolset(
         github_readonly: If `True`, expose only read-only tools.
         **kwargs: Additional arguments passed to `McpToolset`.
     """
-    static_headers: dict[str, str] = {"Authorization": f"Bearer {get_github_pat()}"}
+    static_headers: dict[str, str] = {
+        "Authorization": f"Bearer {os.getenv('GITHUB_PERSONAL_ACCESS_TOKEN')}"
+    }
 
     if github_readonly is not None:
         static_headers.update({"X-MCP-Readonly": str(github_readonly).lower()})
