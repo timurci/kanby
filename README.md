@@ -72,7 +72,7 @@ graph LR
 
 ## Quickstart
 
-### Option 1: API via Docker
+### Option 1: Web Interface via Docker
 ```bash
 git clone https://github.com/timurci/kanby.git
 cd kanby
@@ -80,6 +80,7 @@ cp .env.example .env    # Set GOOGLE_API_KEY and GITHUB_PERSONAL_ACCESS_TOKEN
 make up                 # Starts Docker containers
 ```
 
+Access Web interface at `localhost:3000`
 Access API docs at `localhost:8000/docs`
 
 ### Option 2: ADK CLI
