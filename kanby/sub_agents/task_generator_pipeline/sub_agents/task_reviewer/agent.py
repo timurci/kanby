@@ -12,7 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Sub-package for the task decomposer agent.
+"""Provides the `task_reviewer` agent."""
 
-The agent transforms complex project specifications into smaller tasks.
-"""
+from google.adk import Agent
+
+from .prompt import TASK_REVIEWER_PROMPT
+from .schema import PlanReview
+
+task_reviewer = Agent(
+    model="gemini-2.5-flash",
+    name="task_reviewer",
+    description=(
+        "Reviews task plans for logical consistency, circular dependencies, and"
+        " optimization opportunities"
+    ),
+    instruction=TASK_REVIEWER_PROMPT,
+    output_schema=PlanReview,
+    output_key="task_plan_review",
+)

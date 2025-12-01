@@ -16,10 +16,8 @@
 
 from google.adk import Agent
 
-from kanby.sub_agents.task_decomposer.schema import TaskList
-
-from .prompt import DEPENDENCY_MAPPER_PROMPT
-from .schema import TaskListWithDependency
+from .prompt import TASK_DEPENDENCY_MAPPER_PROMPT
+from .schema import TaskDependencyList
 
 task_dependency_mapper = Agent(
     model="gemini-2.5-flash",
@@ -27,8 +25,7 @@ task_dependency_mapper = Agent(
     description=(
         "Maps dependencies between tasks and determines optimal execution order"
     ),
-    instruction=DEPENDENCY_MAPPER_PROMPT,
-    input_schema=TaskList,
-    output_schema=TaskListWithDependency,
-    output_key="task_dependency_mapper",
+    instruction=TASK_DEPENDENCY_MAPPER_PROMPT,
+    output_schema=TaskDependencyList,
+    output_key="task_dependency_list",
 )

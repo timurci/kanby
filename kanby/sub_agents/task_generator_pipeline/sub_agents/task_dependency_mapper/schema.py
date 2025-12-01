@@ -18,8 +18,6 @@ from enum import Enum
 
 from pydantic import BaseModel, Field
 
-from kanby.sub_agents.task_decomposer.schema import TaskList
-
 
 class TaskDependencyType(str, Enum):
     """Enum for task dependency types in task planning workflow."""
@@ -44,13 +42,12 @@ class TaskDependency(BaseModel):
         populate_by_name = True  # Allow using both field name and alias
 
 
-class TaskListWithDependency(BaseModel):
+class TaskDependencyList(BaseModel):
     """Output schema for task_dependency_mapper agent.
 
     Contains tasks with sequential IDs and their dependency relationships.
     """
 
-    tasks: TaskList
     dependencies: list[TaskDependency] = Field(
         ..., description="List of dependencies between tasks"
     )
