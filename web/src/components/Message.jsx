@@ -81,7 +81,16 @@ export function Message({ message, sessionId, onConfirmationResponse }) {
               {message.toolConfirmation.originalFunctionCall.args && (
                 <div className="confirmation-args">
                   <strong>Arguments:</strong>
-                  <pre>{JSON.stringify(message.toolConfirmation.originalFunctionCall.args, null, 2)}</pre>
+                    <pre>
+                      {JSON.stringify(
+                        Object.fromEntries(
+                          Object.entries(message.toolConfirmation.originalFunctionCall.args)
+                            .filter(([key]) => key !== 'body')
+                        ),
+                        null,
+                        2
+                      )}
+                    </pre>
                 </div>
               )}
             </div>
