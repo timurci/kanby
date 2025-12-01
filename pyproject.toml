@@ -15,9 +15,6 @@ dependencies = [
 ]
 
 [dependency-groups]
-api = [
-    "psycopg[binary]>=3.2.13",
-]
 dev = [
     "google-adk[eval]>=1.18.0",
     "pre-commit>=4.4.0",

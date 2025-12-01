@@ -3,7 +3,8 @@ FROM ghcr.io/astral-sh/uv:python3.13-alpine
 WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
-RUN uv sync --locked --no-dev --group api
+RUN uv sync --locked --no-dev
+RUN uv add "psycopg[binary]"
 
 COPY kanby/ kanby/
 COPY api/ api/
