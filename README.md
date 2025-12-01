@@ -86,10 +86,12 @@ graph LR
     CO --> TP[💬 Task Planner]
     CO --> GO[💬 Github Operator]
     TP --> RV[🔧 Requirement Validator]
-    TP --> TD[🔧 Decomposer]
-    TP --> DM[🔧 Dependency Mapper]
-    TP --> TR[🔧 Reviewer]
-
+    subgraph TGP[Task Generator Pipeline]
+        TD[🔧 Decomposer]
+        TD --> DM[🔧 Dependency Mapper]
+        DM --> TR[🔧 Reviewer]
+    end
+    TP --> TGP
     GO --> GO_READONLY[🧰 GitHub MCP Read-only]
     GO --> GO_HITL[⚙️ HITL Confirmation]
     GO_HITL --> GO_WRITE[🧰 GitHub MCP Write]

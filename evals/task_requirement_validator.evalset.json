@@ -1,0 +1,231 @@
+{
+  "eval_set_id": "task_requirement_validator",
+  "name": "task_requirement_validator",
+  "eval_cases": [
+    {
+      "eval_id": "vague_1",
+      "conversation": [
+        {
+          "invocation_id": "e-05ff4943-8ab0-4643-a363-12139d23f07f",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Make the app better"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "## ⚠️ Requirements Clarification Needed ⚠️\n\nTo create a effective plan for making the app better, I need some more information. Please provide details on the following:\n\n*   **What specific features or functionalities of the app should be improved?**\n*   **What is the primary business goal or user problem that this improvement aims to solve?**\n*   **Are there any specific metrics (e.g., load time, user engagement, bug reports) that need to be improved?**\n*   **What kind of improvements are you looking for (e.g., performance optimization, UI/UX enhancements, new features, bug fixes)?**\n*   **Are there any specific technologies or approaches that should be considered or avoided for these improvements?**\n*   **What parts of the app are explicitly out of scope for this improvement effort?**\n\nOnce I have these details, I can proceed with decomposing the task and creating a comprehensive project plan."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "coordinator",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-cc926461-a42c-47dd-a66f-d487ecccf12a",
+                        "args": {
+                          "agent_name": "task_planner"
+                        },
+                        "name": "transfer_to_agent"
+                      },
+                      "thought_signature": "CpUFAXLI2nzkdVQC9ZRwAxp1BSKJTDR8frU3sph5fCd7emUPYwp7AWF2Ys5OM1i-Bl1G0ccapPya9whDNCs8qu0ka0HpMo8S-ZCvdPsVpeV7w6-ZIEbr-sD1SRCOUstXhF7v9ZZluSLdYISL0hoLYkhNqZDvMx50cySsnxsFHvF7NWiIDNHBmHDsViPe81V5gdslabSS9Fn7gtNUiaanwoKhh98NybrxylxumMcewpy-ycXeYKBDLOA5L2UjSbYlfAY-UFV5dNGyG-L2TxAweQ_7WqmPmSd-e2tDUWd9u6nEjfyOxOLDf0bq28VQIJF7W3tGmESy72SwJkxaAmX06KU4_kMXoSFyy2YcuKTLR3TKw8yd3kNylbVPhaIpKW3z42qU09TUfw_eHl21MNB4GbmeBgPTQ8ndDKT8epsQ0jWRQZ1QMwos5c0tn7ebr3c9CeXlyuX1V2SU8gUdAAj5K1Ts_sJijpoxfvAGQ72qVBb1_HtUM_AysnPtYyRtUBoe1AIv28dcWjZTwbkepnNFtBMs1K2Mj4rpwuOgtlcRczNTNmvDQWWVkD4F_J8OfZWGkTCNtAUdADGyc6OECJZKt1bGVGKVd2zHVBMGIYgzjtNAaI7QgAk-LeQSYPaeaxjUUDZtWo4UgHEDsFQOXkfwpmv2xq9BxFyhOdsBc3UxQD9lbiCriY9BVRSbkROx5wEBazx7pMfUP5hpKHuFwUQNjmq3lozjk31w_6CxkgEr1ZRJeHhjhYLzCG2GTgfB8XGA_7POFj5WlC64vTqppXUvImXf6zq3N2-lPWDsLfV2nCOxgMYo7LiLbCE0KGAF2qxVL3NrXkn6_0aSRIG8jYAqMq-d-s2srigeRf7nSyjYhCywvrb7LXVmcA=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "coordinator",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-cc926461-a42c-47dd-a66f-d487ecccf12a",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "task_planner",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-bccd45ea-2995-4b0e-a21a-ed35e07c88ca",
+                        "args": {
+                          "request": "Make the app better"
+                        },
+                        "name": "task_requirement_validator"
+                      },
+                      "thought_signature": "CvICAXLI2nw-E3galdv27rTMTHPd7UZ44c7N1_N6xk26Keyqj3-MhkFd02nfvrWRMaukKhMNuxzZVF1cV79pX8oHuhm3JIECg6nsagJH6W4StjvjeTc2sj9T4gVSL7uHaJU2xGoMrCTV3wvSIUnYgWAQ_Yq0-VP2Zn-Kvw-cl5NTCuqUmlY95r4tyQ01mVuyFRs8TIE4Lod2U0uTXijsD0Fkxo27VoM5w-wIbLfGB9FWfzWsoQMtgqz5IyzEYQ_vKekK6BjIA7zgLPJ8M7azweAcCvNatXUICvwt47R0MPrnANi3KKXGxmkWgsStCz5MDfdB2aQl5DsuheG_S-k34VRROgdEpd_l_30354kL0xz6n1Yc-kYOwCJQ5R7JNe9oOKaffYU3Bjh43iIWzO-5_xFE844ffv46ychZcg0kyitpXPVmdDCqtYamZqG7ElghmYERXb7VQ8jbNIs95PIQawWf6dLl4hNr5rhv86oSI2LJhyyY2g=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "task_planner",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-bccd45ea-2995-4b0e-a21a-ed35e07c88ca",
+                        "name": "task_requirement_validator",
+                        "response": {
+                          "status": "needs_clarification",
+                          "questions": [
+                            "What specific features or functionalities of the app should be improved?",
+                            "What is the primary business goal or user problem that this improvement aims to solve?",
+                            "Are there any specific metrics (e.g., load time, user engagement, bug reports) that need to be improved?",
+                            "What kind of improvements are you looking for (e.g., performance optimization, UI/UX enhancements, new features, bug fixes)?",
+                            "Are there any specific technologies or approaches that should be considered or avoided for these improvements?",
+                            "What parts of the app are explicitly out of scope for this improvement effort?"
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764511499.606303
+        }
+      ],
+      "session_input": {
+        "app_name": "kanby",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1764511531.009706
+    },
+    {
+      "eval_id": "vague_2",
+      "conversation": [
+        {
+          "invocation_id": "e-1471fc4c-02ce-4582-9809-6f8c6cc2ab14",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Plan tasks from our meeting notes:\n\nWe need to refactor the auth module because it's causing performance issues. Also update the API docs to reflect the new changes. Don't forget to test the OAuth flow afterwards.\n"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The requirements need clarification. Here are the questions:\n\n## ⚠️ Requirements Clarification Needed ⚠️\n\nTo create an effective plan, I need some additional details. Please provide more information on the following:\n\n*   **Performance Issues**: What specific performance issues (e.g., latency, CPU, memory) are currently observed with the auth module, and what are the current metrics?\n*   **Target Components**: Which specific components or services within the auth module are targeted for refactoring?\n*   **Desired Improvements**: What are the desired performance improvements or target metrics for the refactored auth module?\n*   **Refactoring Strategy**: Are there any specific technologies, architectural patterns, or refactoring strategies that should be utilized or considered?\n*   **API Documentation Scope**: What is the precise scope of the API documentation update? Will it cover only changes related to authentication, or broader updates?\n*   **Out-of-Scope Items**: Are there any parts of the overall authentication system (e.g., specific clients, external integrations) that are explicitly out of scope for this refactoring?\n\nOnce I have these details, I can proceed with decomposing the tasks and creating a comprehensive project plan."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "coordinator",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-f4f07457-6601-4a97-b532-8f6d4aa3de5c",
+                        "args": {
+                          "agent_name": "task_planner"
+                        },
+                        "name": "transfer_to_agent"
+                      },
+                      "thought_signature": "CqgEAXLI2nz8MDvZUqRWKbzq8QipaKQW4sQ-4n6Yyl2F7ZzMHe0uxe43PSptkPE1Q5YB1_ICu5t9nw7j_SrFpjHSNdcbEQI9kDPjrVxBIK6FjY5xz3j398Ky7oh3Udi5k29-G7wsrG4Y4wZqFLvsz929uDrZmrxoDmw2cNDSoQ_g8J4okANTL5HmLQAVNtjQILIi0Qxbp1cOnHzEzqjBNH_1ZzN727xrdf8JNhKewh3Urztf_AsVgwWIwM_VjObGU4fbPB3JR1cQZHy-u7Pz_o2rKk5C_opWgUtv06eyG-zgAU5ngpswmDKplELMbr_1LrP3jSE9ByWSlcP9CTQIWL4_tvLYHpGu0TIU-ikJUWBXqSfbkcnNXGntJ6ZVO__1PhBRezdgt9uCAVy1lcCkkDrNVDOGs7lKdNyPEHE01W621JFxrjrsCp67AQiLRiME9Lnyg_py0ZMe7pNrphgt_iy0Iigsp6Cb7uoD0yH4VnTvE2yyOcQao8fbEoriXDEYkebbQFbzah5CSxVFTB6C7lMkvFNsx4eoQucbwt8Mw99Kwm7xNGQ2fJT75iTN1aAcef_uYhiSHtIauvLf7sgnCwM9mIbE3YG3tS8qugAMPwq7xv6QtC-_OWDF7e5mW5opim3yz8MgLQU4ggHIg08JDlPYJrRoqxZ72_nOSEdtC-fb4TQdASJ358U5nWoMCvyo00aEpAPjQ2ub272Rv8NwEFKQ28RnXc0R-bXo"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "coordinator",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f4f07457-6601-4a97-b532-8f6d4aa3de5c",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "task_planner",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-1f9880da-73fa-40f0-96f7-cc625bcbf5dd",
+                        "args": {
+                          "request": "We need to refactor the auth module because it's causing performance issues. Also update the API docs to reflect the new changes. Don't forget to test the OAuth flow afterwards."
+                        },
+                        "name": "task_requirement_validator"
+                      },
+                      "thought_signature": "CrICAXLI2nzc0YNXQaKnd2WCNUVtpuxxulICs58RLjY3fnUWpFzSrFFTZPHkclRIzR6exHvAcrQw2UB8GvPbJzWTgnapgPGG0LsMgg_iu47AgkbhLtDfAN8iP3YLhj6UnP-JnxipZ3SBQuFOH4-qsOguFSC0zolh-GTUFj1hD122J9Ta2yqYs_P6YBC-pU-Gpr6-81JTfWld5w9aQCO6B5WdqysEYGrEES6mQrU2Zhczw2fpNkG79qKNNfj494JFIhsJpGUZP7UV3p9rPwZwOjTXlNOu0-nV13CuzwmMpgRYE1ZUldAxxmx1WZXk-VwMZL7S4o4HBJGTqX6_VBcqtkWYbra_LrPq-ppT64xybRSRP_50z8c_1LaCg0Rls6aSFOCKpJltYfGfBbjkqJOIYMU6EUiH"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "task_planner",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-1f9880da-73fa-40f0-96f7-cc625bcbf5dd",
+                        "name": "task_requirement_validator",
+                        "response": {
+                          "status": "needs_clarification",
+                          "questions": [
+                            "What specific performance issues (e.g., latency, CPU, memory) are currently observed with the auth module, and what are the current metrics?",
+                            "Which specific components or services within the auth module are targeted for refactoring?",
+                            "What are the desired performance improvements or target metrics for the refactored auth module?",
+                            "Are there any specific technologies, architectural patterns, or refactoring strategies that should be utilized or considered?",
+                            "What is the precise scope of the API documentation update? Will it cover only changes related to authentication, or broader updates?",
+                            "Are there any parts of the overall authentication system (e.g., specific clients, external integrations) that are explicitly out of scope for this refactoring?"
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764511624.872246
+        }
+      ],
+      "session_input": {
+        "app_name": "kanby",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1764511645.0034091
+    }
+  ],
+  "creation_timestamp": 1764511493.975581
+}
